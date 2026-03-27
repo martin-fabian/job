@@ -3,26 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Martin Fabian — Full-Stack Developer</title>
+    <title>Martin Fabián — AI-Enhanced Senior Developer</title>
     <meta
       name="description"
-      content="Full-Stack Developer specializovaný na Java, Angular, Spring Boot, AI integraci a záchranu nefunkčních aplikací. Remote."
+      content="Seniorní Full-Stack vývojář s enterprise zkušenostmi a AI-first přístupem. Java, Angular, Spring Boot. Záchrana nefunkčních aplikací. Remote."
     />
     <style>
       :root {
-        --bg: #0d0d0f;
-        --bg2: #13131a;
-        --bg3: #1a1a24;
-        --border: rgba(255, 255, 255, 0.07);
-        --accent: #7c6aff;
-        --accent2: #a78bfa;
-        --accent3: #38bdf8;
-        --text: #e8e8f0;
-        --muted: #8888aa;
-        --card: #16161f;
-        --card-hover: #1c1c2a;
-        --green: #34d399;
-        --radius: 12px;
+        --bg: #0c0905;
+        --section-bg: #181108;
+        --card: #22180c;
+        --card-hover: #2d2112;
+        --border: rgba(210, 165, 80, 0.13);
+        --accent: #c47c2c;
+        --accent2: #d9a04e;
+        --accent3: #f0c870;
+        --text: #f0e6d0;
+        --muted: #9a8464;
+        --green: #5dba8a;
+        --orange: #d4724a;
+        --radius: 14px;
       }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,174 +41,121 @@
         position: fixed;
         inset: 0;
         background: url('home.jpg') center center / cover no-repeat;
-        opacity: 0.07;
+        opacity: 0.06;
         pointer-events: none;
         z-index: 0;
       }
 
-      nav, section, footer { position: relative; z-index: 1; }
+      nav, section, .contact-section, footer { position: relative; z-index: 1; }
 
-      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-      section { padding: 80px 0; }
+      /* ── LAYOUT ── */
+      .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+      section { padding: 12px 0; }
+
+      /* Every section except spotlight gets a floating box treatment */
+      section:not(#spotlight) > .container,
+      .contact-section > .container {
+        background: var(--section-bg);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 44px 40px;
+        margin-bottom: 12px;
+      }
 
       /* ── NAV ── */
       nav {
         position: fixed;
         top: 0; left: 0; right: 0;
         z-index: 100;
-        background: rgba(13, 13, 15, 0.88);
+        background: rgba(12,9,5,0.92);
         backdrop-filter: blur(16px);
         border-bottom: 1px solid var(--border);
       }
-
       nav .inner {
-        max-width: 900px;
+        max-width: 960px;
         margin: 0 auto;
-        padding: 0 24px;
+        padding: 0 20px;
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: space-between;
       }
-
-      .nav-logo {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--text);
-        text-decoration: none;
-        letter-spacing: -0.01em;
-      }
+      .nav-logo { font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
       .nav-logo span { color: var(--accent2); }
-
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 24px;
-        list-style: none;
-      }
-      .nav-links a {
-        font-size: 13px;
-        color: var(--muted);
-        text-decoration: none;
-        transition: color 0.2s;
-        letter-spacing: 0.02em;
-      }
+      .nav-right { display: flex; align-items: center; gap: 24px; }
+      .nav-links { display: flex; gap: 24px; list-style: none; }
+      .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
       .nav-links a:hover { color: var(--text); }
 
-      /* ── LANG TOGGLE ── */
       .lang-toggle {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        background: rgba(255,255,255,0.05);
+        display: flex; align-items: center; gap: 2px;
+        background: rgba(255,255,255,0.04);
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 3px;
+        border-radius: 8px; padding: 3px;
       }
-
       .lang-btn {
-        padding: 4px 10px;
-        border-radius: 6px;
-        border: none;
-        background: transparent;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.18s;
-        letter-spacing: 0.04em;
+        padding: 4px 10px; border-radius: 6px; border: none;
+        background: transparent; color: var(--muted);
+        font-size: 12px; font-weight: 600; cursor: pointer;
+        transition: all 0.18s; letter-spacing: 0.04em;
       }
-      .lang-btn.active {
-        background: var(--accent);
-        color: #fff;
-      }
-      .lang-btn:not(.active):hover {
-        color: var(--text);
-      }
+      .lang-btn.active { background: var(--accent); color: #fff; }
+      .lang-btn:not(.active):hover { color: var(--text); }
 
       /* ── SPOTLIGHT ── */
       #spotlight {
-        padding-top: 140px;
-        padding-bottom: 100px;
+        padding-top: 120px;
+        padding-bottom: 56px;
         position: relative;
         overflow: hidden;
       }
-
+      .spotlight-glow {
+        position: absolute;
+        top: -180px; left: 50%;
+        transform: translateX(-50%);
+        width: 700px; height: 700px;
+        background: radial-gradient(circle, rgba(196,124,44,0.12) 0%, transparent 70%);
+        pointer-events: none;
+      }
       .spotlight-inner {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 48px;
         align-items: center;
       }
-
       .avatar {
-        width: 140px;
-        height: 140px;
+        width: 140px; height: 140px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid rgba(167, 139, 250, 0.3);
-        box-shadow: 0 0 32px rgba(124, 106, 255, 0.2);
+        border: 2px solid rgba(217,160,78,0.35);
+        box-shadow: 0 0 32px rgba(196,124,44,0.2);
         flex-shrink: 0;
       }
 
-      @media (max-width: 640px) {
-        .spotlight-inner {
-          grid-template-columns: 1fr;
-        }
-        .avatar {
-          width: 100px;
-          height: 100px;
-          order: -1;
-        }
-      }
-
-      .spotlight-glow {
-        position: absolute;
-        top: -200px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(124, 106, 255, 0.12) 0%, transparent 70%);
-        pointer-events: none;
-      }
-
       .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 5px 12px;
-        border-radius: 100px;
-        border: 1px solid rgba(52, 211, 153, 0.3);
-        background: rgba(52, 211, 153, 0.06);
-        font-size: 12px;
-        color: var(--green);
-        font-weight: 500;
-        margin-bottom: 24px;
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 5px 12px; border-radius: 100px;
+        border: 1px solid rgba(93,186,138,0.3);
+        background: rgba(93,186,138,0.07);
+        font-size: 12px; color: var(--green);
+        font-weight: 500; margin-bottom: 24px;
         letter-spacing: 0.03em;
       }
       .badge::before {
-        content: "";
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        background: var(--green);
+        content: ""; width: 6px; height: 6px;
+        border-radius: 50%; background: var(--green);
         box-shadow: 0 0 6px var(--green);
         animation: blink 2s infinite;
       }
-      @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.35; } }
+      @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
       h1 {
-        font-size: clamp(36px, 6vw, 56px);
+        font-size: clamp(32px, 5.5vw, 52px);
         font-weight: 700;
         letter-spacing: -0.03em;
-        line-height: 1.1;
+        line-height: 1.12;
         margin-bottom: 20px;
-        color: #ffffff;
+        color: #fff;
       }
       h1 .gradient {
         background: linear-gradient(135deg, var(--accent2) 0%, var(--accent3) 100%);
@@ -216,373 +163,238 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
       .lead {
-        font-size: 18px;
-        color: var(--muted);
-        max-width: 540px;
-        margin-bottom: 36px;
-        line-height: 1.7;
+        font-size: 17px; color: var(--muted);
+        max-width: 520px; margin-bottom: 32px; line-height: 1.75;
       }
       .lead strong { color: var(--text); font-weight: 500; }
 
-      .cta-row {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
+      .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
       .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 11px 22px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.2s;
-        cursor: pointer;
-        border: none;
-        letter-spacing: 0.01em;
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 11px 22px; border-radius: 8px;
+        font-size: 14px; font-weight: 500;
+        text-decoration: none; transition: all 0.2s;
+        cursor: pointer; border: none; letter-spacing: 0.01em;
       }
-      .btn-primary {
-        background: var(--accent);
-        color: #fff;
-        box-shadow: 0 0 24px rgba(124, 106, 255, 0.3);
-      }
-      .btn-primary:hover {
-        background: #8f7eff;
-        box-shadow: 0 0 32px rgba(124, 106, 255, 0.45);
-        transform: translateY(-1px);
-      }
-      .btn-ghost {
-        background: transparent;
-        color: var(--muted);
-        border: 1px solid var(--border);
-      }
-      .btn-ghost:hover {
-        border-color: rgba(255,255,255,0.15);
-        color: var(--text);
-        transform: translateY(-1px);
-      }
+      .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 0 24px rgba(196,124,44,0.3); }
+      .btn-primary:hover { background: #d98e3a; box-shadow: 0 0 32px rgba(196,124,44,0.45); transform: translateY(-1px); }
+      .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+      .btn-ghost:hover { border-color: rgba(210,165,80,0.3); color: var(--text); transform: translateY(-1px); }
 
       .metrics {
-        display: flex;
-        gap: 40px;
-        margin-top: 60px;
-        padding-top: 40px;
+        display: flex; gap: 36px;
+        margin-top: 48px; padding-top: 32px;
         border-top: 1px solid var(--border);
         flex-wrap: wrap;
       }
-      .metric-num {
-        font-size: 28px;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: -0.03em;
-      }
+      .metric-num { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -0.03em; }
       .metric-num span { color: var(--accent2); }
-      .metric-label {
-        font-size: 12px;
-        color: var(--muted);
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        margin-top: 2px;
-      }
+      .metric-label { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 2px; }
 
       /* ── SECTION HEADERS ── */
-      .section-label {
-        font-size: 11px;
-        font-weight: 600;
-        color: var(--accent2);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-      }
-      h2 {
-        font-size: clamp(24px, 4vw, 34px);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: #fff;
-        margin-bottom: 14px;
-      }
-      .section-desc {
-        color: var(--muted);
-        font-size: 16px;
-        max-width: 520px;
-        margin-bottom: 48px;
-        line-height: 1.7;
-      }
+      .section-label { font-size: 11px; font-weight: 600; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+      h2 { font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: #fff; margin-bottom: 12px; }
+      .section-desc { color: var(--muted); font-size: 15px; max-width: 540px; margin-bottom: 36px; line-height: 1.75; }
 
-      /* ── SKILLS ── */
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
-        gap: 10px;
-      }
-      .skill-chip {
-        padding: 10px 16px;
-        border-radius: 8px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        font-size: 13px;
-        font-weight: 500;
-        color: var(--text);
-        text-align: center;
+      /* ── VALUE PROPS ── */
+      .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .value-card {
+        padding: 24px 20px; border-radius: var(--radius);
+        background: var(--card); border: 1px solid var(--border);
         transition: all 0.2s;
       }
-      .skill-chip:hover {
-        background: var(--card-hover);
-        border-color: rgba(124, 106, 255, 0.3);
-        color: var(--accent2);
-        transform: translateY(-2px);
-      }
+      .value-card:hover { background: var(--card-hover); border-color: rgba(210,165,80,0.25); transform: translateY(-2px); }
+      .value-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+      .value-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 7px; }
+      .value-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-      /* ── SERVICES ── */
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 16px;
+      /* ── ABOUT ── */
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+      .about-text p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+      .about-text p:last-child { margin-bottom: 0; }
+      .about-text strong { color: var(--text); font-weight: 500; }
+      .about-highlights { display: flex; flex-direction: column; gap: 10px; }
+      .highlight-item {
+        display: flex; align-items: flex-start; gap: 12px;
+        padding: 14px;
+        border-radius: 10px;
+        background: var(--card); border: 1px solid var(--border);
+        font-size: 13px; color: var(--text); line-height: 1.5;
       }
-      .service-card {
-        padding: 24px;
-        border-radius: var(--radius);
-        background: var(--card);
-        border: 1px solid var(--border);
-        transition: all 0.25s;
-        position: relative;
-        overflow: hidden;
-      }
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--accent), var(--accent3));
-        opacity: 0;
-        transition: opacity 0.25s;
-      }
-      .service-card:hover {
-        background: var(--card-hover);
-        border-color: rgba(124, 106, 255, 0.2);
-        transform: translateY(-3px);
-        box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-      }
-      .service-card:hover::before { opacity: 1; }
-      .service-icon { font-size: 28px; margin-bottom: 14px; display: block; }
-      .service-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-      .service-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+      .highlight-item .hi-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
 
-      /* ── RESCUE ── */
-      .rescue-card {
-        background: linear-gradient(135deg, rgba(124,106,255,0.08) 0%, rgba(56,189,248,0.05) 100%);
-        border: 1px solid rgba(124,106,255,0.2);
+      /* ── FLAGSHIP ── */
+      .flagship-card {
         border-radius: var(--radius);
-        padding: 40px;
+        background: linear-gradient(135deg, rgba(196,124,44,0.1) 0%, rgba(240,200,112,0.05) 100%);
+        border: 1px solid rgba(210,165,80,0.22);
+        padding: 36px;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        grid-template-columns: 1fr auto;
+        gap: 36px;
         align-items: center;
       }
-      .rescue-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 6px;
-        background: rgba(124,106,255,0.15);
-        color: var(--accent2);
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-      }
-      .rescue-card h3 {
-        font-size: 22px;
-        font-weight: 700;
-        color: #fff;
+      .flagship-label {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 4px 10px; border-radius: 6px;
+        background: rgba(196,124,44,0.15); color: var(--accent2);
+        font-size: 11px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase;
         margin-bottom: 12px;
-        letter-spacing: -0.01em;
       }
-      .rescue-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-      .rescue-list { display: flex; flex-direction: column; gap: 12px; }
-      .rescue-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-size: 13px;
-        color: var(--text);
+      .flagship-card h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 9px; letter-spacing: -0.02em; }
+      .flagship-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
+      .flagship-stats { display: flex; gap: 22px; flex-wrap: wrap; }
+      .fs-num { font-size: 20px; font-weight: 700; color: #fff; }
+      .fs-num span { color: var(--accent2); }
+      .fs-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+      .flagship-links { display: flex; flex-direction: column; gap: 10px; }
+      .flagship-link {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 10px 18px; border-radius: 8px;
+        border: 1px solid var(--border); background: rgba(255,255,255,0.03);
+        color: var(--text); text-decoration: none;
+        font-size: 13px; font-weight: 500;
+        transition: all 0.2s; white-space: nowrap;
       }
-      .rescue-item::before {
-        content: "✓";
-        color: var(--green);
-        font-weight: 700;
-        margin-top: 1px;
-        flex-shrink: 0;
+      .flagship-link:hover { border-color: rgba(210,165,80,0.3); background: rgba(196,124,44,0.1); color: var(--accent2); }
+
+      /* ── PACKAGES ── */
+      .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .package-card {
+        padding: 24px; border-radius: var(--radius);
+        background: var(--card); border: 1px solid var(--border);
+        display: flex; flex-direction: column;
+        transition: all 0.25s;
+        position: relative; overflow: hidden;
       }
+      .package-card::before {
+        content: ""; position: absolute;
+        top: 0; left: 0; right: 0; height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent3));
+        opacity: 0; transition: opacity 0.25s;
+      }
+      .package-card:hover { background: var(--card-hover); border-color: rgba(210,165,80,0.25); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+      .package-card:hover::before { opacity: 1; }
+      .package-icon { font-size: 26px; margin-bottom: 12px; }
+      .package-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+      .package-target { font-size: 12px; color: var(--accent2); margin-bottom: 12px; font-style: italic; }
+      .package-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
+      .package-price { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+      .package-price strong { color: var(--text); }
+
+      /* ── PROCESS ── */
+      .process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .process-card {
+        padding: 22px; border-radius: var(--radius);
+        background: var(--card); border: 1px solid var(--border);
+        display: flex; gap: 16px; transition: all 0.2s;
+      }
+      .process-card:hover { background: var(--card-hover); }
+      .process-num {
+        font-size: 26px; font-weight: 700;
+        color: var(--accent); opacity: 0.5;
+        line-height: 1; flex-shrink: 0;
+      }
+      .process-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+      .process-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+      /* ── SKILLS ── */
+      .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+      .skill-chip {
+        padding: 9px 14px; border-radius: 8px;
+        background: var(--card); border: 1px solid var(--border);
+        font-size: 13px; font-weight: 500; color: var(--text);
+        text-align: center; transition: all 0.2s;
+      }
+      .skill-chip:hover { background: var(--card-hover); border-color: rgba(210,165,80,0.3); color: var(--accent2); transform: translateY(-2px); }
 
       /* ── EXPERIENCE ── */
       .timeline { display: flex; flex-direction: column; gap: 4px; }
       .exp-card {
-        padding: 24px 28px 24px 48px;
+        padding: 20px 22px 20px 42px;
         border-radius: var(--radius);
-        background: var(--card);
-        border: 1px solid var(--border);
-        transition: all 0.2s;
-        position: relative;
+        background: var(--card); border: 1px solid var(--border);
+        transition: all 0.2s; position: relative;
       }
       .exp-card::before {
-        content: "";
-        position: absolute;
-        left: 24px; top: 32px;
-        width: 8px; height: 8px;
-        border-radius: 50%;
-        background: var(--accent2);
-        box-shadow: 0 0 8px var(--accent2);
+        content: ""; position: absolute;
+        left: 18px; top: 26px;
+        width: 8px; height: 8px; border-radius: 50%;
+        background: var(--accent2); box-shadow: 0 0 8px var(--accent2);
       }
-      .exp-card:hover {
-        background: var(--card-hover);
-        border-color: rgba(124,106,255,0.15);
-      }
-      .exp-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 6px;
-        flex-wrap: wrap;
-      }
-      .exp-role { font-size: 15px; font-weight: 600; color: #fff; }
-      .exp-period {
-        font-size: 12px;
-        color: var(--muted);
-        padding: 2px 8px;
-        border-radius: 4px;
-        background: rgba(255,255,255,0.04);
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      .exp-company { font-size: 13px; color: var(--accent2); margin-bottom: 10px; font-weight: 500; }
+      .exp-card:hover { background: var(--card-hover); border-color: rgba(210,165,80,0.2); }
+      .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+      .exp-role { font-size: 14px; font-weight: 600; color: #fff; }
+      .exp-period { font-size: 12px; color: var(--muted); padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.04); white-space: nowrap; flex-shrink: 0; }
+      .exp-company { font-size: 13px; color: var(--accent2); margin-bottom: 7px; font-weight: 500; }
       .exp-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
-      .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-      .tag {
-        padding: 3px 9px;
-        border-radius: 4px;
-        background: rgba(124,106,255,0.1);
-        color: var(--accent2);
-        font-size: 11px;
-        font-weight: 500;
-      }
+      .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+      .tag { padding: 3px 9px; border-radius: 4px; background: rgba(196,124,44,0.12); color: var(--accent2); font-size: 11px; font-weight: 500; }
 
       /* ── PRICING ── */
-      .pricing-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        max-width: 560px;
-      }
+      .pricing-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 560px; margin-bottom: 20px; }
       .pricing-card {
-        padding: 28px;
-        border-radius: var(--radius);
-        background: var(--card);
-        border: 1px solid var(--border);
+        padding: 26px; border-radius: var(--radius);
+        background: var(--card); border: 1px solid var(--border);
         transition: all 0.2s;
       }
       .pricing-card.featured {
-        background: linear-gradient(135deg, rgba(124,106,255,0.12) 0%, rgba(56,189,248,0.06) 100%);
-        border-color: rgba(124,106,255,0.3);
+        background: linear-gradient(135deg, rgba(196,124,44,0.14) 0%, rgba(240,200,112,0.06) 100%);
+        border-color: rgba(210,165,80,0.3);
       }
-      .pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
-      .pricing-label {
-        font-size: 11px;
-        font-weight: 600;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 12px;
-      }
+      .pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+      .pricing-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
       .pricing-card.featured .pricing-label { color: var(--accent2); }
-      .pricing-amount {
-        font-size: 34px;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: -0.04em;
-        line-height: 1;
-        margin-bottom: 4px;
-      }
-      .pricing-unit { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+      .pricing-amount { font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
+      .pricing-unit { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
       .pricing-note { font-size: 12px; color: var(--muted); line-height: 1.5; }
+      .agency-note {
+        padding: 16px 20px; border-radius: 10px;
+        background: rgba(212,114,74,0.07);
+        border: 1px solid rgba(212,114,74,0.22);
+        font-size: 13px; color: var(--muted); line-height: 1.6;
+        max-width: 560px;
+      }
+      .agency-note strong { color: var(--orange); }
 
       /* ── CONTACT ── */
-      .contact-section { padding: 80px 0 100px; }
+      .contact-section { padding: 12px 0 24px; }
       .contact-box {
-        background: linear-gradient(135deg, rgba(124,106,255,0.1) 0%, rgba(56,189,248,0.06) 100%);
-        border: 1px solid rgba(124,106,255,0.2);
-        border-radius: 20px;
-        padding: 60px 40px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
+        background: linear-gradient(135deg, rgba(196,124,44,0.1) 0%, rgba(240,200,112,0.05) 100%);
+        border: 1px solid rgba(210,165,80,0.2);
+        border-radius: 20px; padding: 52px 40px;
+        text-align: center; position: relative; overflow: hidden;
       }
       .contact-box::after {
-        content: "";
-        position: absolute;
+        content: ""; position: absolute;
         bottom: -80px; right: -80px;
         width: 300px; height: 300px;
-        background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(240,200,112,0.07) 0%, transparent 70%);
         pointer-events: none;
       }
       .contact-box h2 { margin-bottom: 12px; }
-      .contact-box p {
-        color: var(--muted);
-        font-size: 16px;
-        margin-bottom: 32px;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.7;
-      }
-      .contact-link {
-        font-size: 15px;
-        color: var(--accent2);
-        text-decoration: none;
-        transition: color 0.2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 16px;
-      }
+      .contact-box p { color: var(--muted); font-size: 15px; margin-bottom: 28px; max-width: 420px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+      .contact-link { font-size: 14px; color: var(--accent2); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; }
       .contact-link:hover { color: #fff; }
 
       /* ── FOOTER ── */
-      footer {
-        border-top: 1px solid var(--border);
-        padding: 28px 0;
-      }
-      footer .inner {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
+      footer { border-top: 1px solid var(--border); padding: 24px 0; background: var(--bg); }
+      footer .inner { max-width: 960px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
       footer p { font-size: 12px; color: var(--muted); }
       footer a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
       footer a:hover { color: var(--text); }
 
       /* ── MOBILE ── */
-      @media (max-width: 640px) {
-        section { padding: 60px 0; }
+      @media (max-width: 720px) {
+        section:not(#spotlight) > .container,
+        .contact-section > .container { padding: 28px 20px; }
         .nav-links { display: none; }
-        .rescue-card { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
-        .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
-        .metrics { gap: 28px; }
-        .contact-box { padding: 40px 24px; }
+        .spotlight-inner, .about-grid, .flagship-card, .value-grid, .packages-grid, .process-grid { grid-template-columns: 1fr; gap: 16px; }
+        .avatar { width: 88px; height: 88px; order: -1; }
+        .pricing-wrapper { grid-template-columns: 1fr; max-width: 100%; }
+        .contact-box { padding: 32px 20px; }
       }
     </style>
   </head>
@@ -591,14 +403,15 @@
     <!-- NAV -->
     <nav>
       <div class="inner">
-        <a href="#" class="nav-logo">Martin <span>Fabian</span></a>
+        <a href="#" class="nav-logo">Martin <span>Fabián</span></a>
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="#services"    data-cs="Služby"      data-en="Services">Služby</a></li>
-            <li><a href="#rescue"      data-cs="Záchrana app" data-en="App Rescue">Záchrana app</a></li>
-            <li><a href="#experience"  data-cs="Zkušenosti"  data-en="Experience">Zkušenosti</a></li>
-            <li><a href="#pricing"     data-cs="Sazby"       data-en="Pricing">Sazby</a></li>
-            <li><a href="#contact"     data-cs="Kontakt"     data-en="Contact">Kontakt</a></li>
+            <li><a href="#value"      data-cs="Proč já"      data-en="Why me">Proč já</a></li>
+            <li><a href="#packages"   data-cs="Služby"       data-en="Services">Služby</a></li>
+            <li><a href="#process"    data-cs="Jak pracuji"  data-en="How I work">Jak pracuji</a></li>
+            <li><a href="#experience" data-cs="Zkušenosti"   data-en="Experience">Zkušenosti</a></li>
+            <li><a href="#pricing"    data-cs="Sazby"        data-en="Pricing">Sazby</a></li>
+            <li><a href="#contact"    data-cs="Kontakt"      data-en="Contact">Kontakt</a></li>
           </ul>
           <div class="lang-toggle">
             <button class="lang-btn active" data-lang="cs">CS</button>
@@ -614,44 +427,329 @@
       <div class="container">
         <div class="spotlight-inner">
           <div>
-        <div class="badge" data-cs="Dostupný pro freelance projekty" data-en="Available for freelance projects">
-          Dostupný pro freelance projekty
+            <div class="badge"
+                 data-cs="Dostupný pro nové projekty"
+                 data-en="Available for new projects">
+              Dostupný pro nové projekty
+            </div>
+            <h1>
+              <span data-cs="Seniorní kvalita." data-en="Senior quality.">Seniorní kvalita.</span><br />
+              <span class="gradient" data-cs="Rychlost AI." data-en="AI speed.">Rychlost AI.</span>
+            </h1>
+            <p class="lead">
+              <span data-cs="Kombinuji <strong>5+ let enterprise vývoje</strong> s AI-first přístupem. Klient platí za seniorní zkušenosti, ale díky AI dostává výsledky v čase, za který by jinde zaplatil celý tým."
+                    data-en="I combine <strong>5+ years of enterprise development</strong> with an AI-first approach. You pay for senior expertise but get results at a speed that would otherwise require a whole team.">
+                Kombinuji <strong>5+ let enterprise vývoje</strong> s AI-first přístupem. Klient platí za seniorní zkušenosti, ale díky AI dostává výsledky v čase, za který by jinde zaplatil celý tým.
+              </span>
+            </p>
+            <div class="cta-row">
+              <a href="#contact" class="btn btn-primary"
+                 data-cs="Poptat projekt" data-en="Get in touch">Poptat projekt</a>
+              <a href="#packages" class="btn btn-ghost"
+                 data-cs="Co nabízím →" data-en="What I offer →">Co nabízím →</a>
+            </div>
+            <div class="metrics">
+              <div>
+                <div class="metric-num">5<span>+</span></div>
+                <div class="metric-label" data-cs="Let praxe" data-en="Years of practice">Let praxe</div>
+              </div>
+              <div>
+                <div class="metric-num">30<span>%+</span></div>
+                <div class="metric-label" data-cs="Nárůst produktivity díky AI" data-en="Productivity boost via AI">Nárůst produktivity díky AI</div>
+              </div>
+              <div>
+                <div class="metric-num">10k<span>+</span></div>
+                <div class="metric-label" data-cs="Řádků sólového kódu" data-en="Lines shipped solo">Řádků sólového kódu</div>
+              </div>
+              <div>
+                <div class="metric-num">100<span>%</span></div>
+                <div class="metric-label" data-cs="Remote" data-en="Remote">Remote</div>
+              </div>
+            </div>
+          </div>
+          <img src="me.jpg" alt="Martin Fabián" class="avatar" />
         </div>
-        <h1>
-          <span data-cs="Full-Stack Developer" data-en="Full-Stack Developer">Full-Stack Developer</span><br />
-          <span class="gradient">Java · Angular · AI</span>
-        </h1>
-        <p class="lead">
-          <span data-cs="Stavím <strong>produkční webové aplikace</strong> od nuly — a zachraňuju ty, které přestaly fungovat. S AI-assisted workflows dodávám rychleji bez kompromisů na kvalitě."
-                data-en="I build <strong>production-grade web applications</strong> from scratch — and I rescue ones that stopped working. With AI-assisted workflows, I deliver faster without cutting corners.">
-            Stavím <strong>produkční webové aplikace</strong> od nuly — a zachraňuju ty, které přestaly fungovat. S AI-assisted workflows dodávám rychleji bez kompromisů na kvalitě.
-          </span>
+      </div>
+    </section>
+
+    <!-- VALUE PROPS -->
+    <section id="value">
+      <div class="container">
+        <p class="section-label" data-cs="Unikátní výhoda" data-en="Unique advantage">Unikátní výhoda</p>
+        <h2 data-cs="Proč spolupracovat právě se mnou?" data-en="Why work with me?">
+          Proč spolupracovat právě se mnou?
+        </h2>
+        <p class="section-desc"
+           data-cs="Nejsem jen další freelancer. Jsem AI-Enhanced Senior Fullstack Partner — kombinace, kterou agentury nedokáží nabídnout za tuto cenu."
+           data-en="I'm not just another freelancer. I'm an AI-Enhanced Senior Fullstack Partner — a combination agencies can't match at this price.">
+          Nejsem jen další freelancer. Jsem AI-Enhanced Senior Fullstack Partner — kombinace, kterou agentury nedokáží nabídnout za tuto cenu.
         </p>
-        <div class="cta-row">
-          <a href="#contact" class="btn btn-primary" data-cs="Napište mi" data-en="Get in touch">Napište mi</a>
-          <a href="#experience" class="btn btn-ghost"
-             data-cs="Moje zkušenosti →" data-en="My experience →">Moje zkušenosti →</a>
+        <div class="value-grid">
+          <div class="value-card">
+            <span class="value-icon">🏦</span>
+            <div class="value-title" data-cs="Enterprise seniorita" data-en="Enterprise seniority">Enterprise seniorita</div>
+            <div class="value-desc"
+                 data-cs="Prošel jsem vývojem pro velké české instituce. Vím, co znamená bezpečnost, škálovatelnost a clean code v prostředí s nejvyššími nároky na stabilitu."
+                 data-en="I've built software for major Czech institutions. I know what security, scalability and clean code mean in environments with the highest stability requirements.">
+              Prošel jsem vývojem pro velké české instituce. Vím, co znamená bezpečnost, škálovatelnost a clean code v prostředí s nejvyššími nároky na stabilitu.
+            </div>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">🤖</span>
+            <div class="value-title" data-cs="AI jako motor, ne hračka" data-en="AI as engine, not toy">AI jako motor, ne hračka</div>
+            <div class="value-desc"
+                 data-cs="Používám Claude AI a Codex CLI pro generování kódu, debugging a automatizaci. Výsledek: neplatíte za psaní boilerplate kódu, ale za řešení vašeho problému."
+                 data-en="I use Claude AI and Codex CLI for code generation, debugging and automation. Result: you don't pay for writing boilerplate, you pay for solving your actual problem.">
+              Používám Claude AI a Codex CLI pro generování kódu, debugging a automatizaci. Výsledek: neplatíte za psaní boilerplate kódu, ale za řešení vašeho problému.
+            </div>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">🔧</span>
+            <div class="value-title" data-cs="End-to-end vlastnictví" data-en="End-to-end ownership">End-to-end vlastnictví</div>
+            <div class="value-desc"
+                 data-cs="Backend v Javě, frontend v Angularu, nasazení na Linux VPS — vše najednou. Nepotřebujete koordinovat frontendistu, backendistu a admina zvlášť."
+                 data-en="Java backend, Angular frontend, Linux VPS deployment — all at once. No need to separately coordinate a frontend dev, backend dev and sysadmin.">
+              Backend v Javě, frontend v Angularu, nasazení na Linux VPS — vše najednou. Nepotřebujete koordinovat frontendistu, backendistu a admina zvlášť.
+            </div>
+          </div>
         </div>
-        <div class="metrics">
-          <div>
-            <div class="metric-num">3<span>+</span></div>
-            <div class="metric-label" data-cs="Roky freelance" data-en="Years freelance">Roky freelance</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <p class="section-label" data-cs="O mně" data-en="About me">O mně</p>
+        <h2 data-cs="Seniorní logika & AI efektivita" data-en="Senior logic & AI efficiency">
+          Seniorní logika & AI efektivita
+        </h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              <span data-cs="Jmenuji se Martin Fabián a přes 5 let stavím softwarová řešení, která dávají smysl. Moje cesta vede od správy kritických systémů v enterprise prostředí až po kompletní vývoj produktů na zelené louce."
+                    data-en="My name is Martin Fabián and for over 5 years I've been building software that makes sense. My path leads from managing critical systems in enterprise environments to building complete products from scratch.">
+                Jmenuji se Martin Fabián a přes 5 let stavím softwarová řešení, která dávají smysl. Moje cesta vede od správy kritických systémů v enterprise prostředí až po kompletní vývoj produktů na zelené louce.
+              </span>
+            </p>
+            <p>
+              <span data-cs="Programování pro mě není o biflování syntaxe — je o architektuře, logice a řešení reálných problémů. Díky AI nástrojům dokážu pracovat v jakémkoli jazyce nebo frameworku, protože seniorní myšlení se nepřekládá, jen aplikuje."
+                    data-en="Programming for me isn't about memorizing syntax — it's about architecture, logic and solving real problems. With AI tools I can work in any language or framework, because senior thinking doesn't need translation, just application.">
+                Programování pro mě není o biflování syntaxe — je o architektuře, logice a řešení reálných problémů. Díky AI nástrojům dokážu pracovat v jakémkoli jazyce nebo frameworku, protože seniorní myšlení se nepřekládá, jen aplikuje.
+              </span>
+            </p>
+            <p>
+              <span data-cs='Specializuji se na „vibe coding cleanup" — přebírat projekty, které jiní vzdali, zorientovat se v cizím kódu a přivést je zpět k životu. Kombinace enterprise zkušeností a AI to dělá znatelně efektivnější než tradičním způsobem.'
+                    data-en='I specialize in "vibe coding cleanup" — taking over projects others gave up on, understanding unfamiliar code and bringing it back to life. The combination of enterprise experience and AI makes this significantly more efficient than the traditional approach.'>
+                Specializuji se na „vibe coding cleanup" — přebírat projekty, které jiní vzdali, zorientovat se v cizím kódu a přivést je zpět k životu. Kombinace enterprise zkušeností a AI to dělá znatelně efektivnější než tradičním způsobem.
+              </span>
+            </p>
           </div>
-          <div>
-            <div class="metric-num">5<span>+</span></div>
-            <div class="metric-label" data-cs="Roky praxe" data-en="Years experience">Roky praxe</div>
-          </div>
-          <div>
-            <div class="metric-num">10k<span>+</span></div>
-            <div class="metric-label" data-cs="Řádků kódu solo" data-en="Lines shipped solo">Řádků kódu solo</div>
-          </div>
-          <div>
-            <div class="metric-num">100<span>%</span></div>
-            <div class="metric-label" data-cs="Plně remote" data-en="Fully remote">Plně remote</div>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="hi-icon">🎯</span>
+              <span data-cs="Technologická agnostika — jazyk nebo framework není překážka, je to jen implementační detail"
+                    data-en="Technology agnostic — language or framework is not a barrier, it's just an implementation detail">
+                Technologická agnostika — jazyk nebo framework není překážka, je to jen implementační detail
+              </span>
+            </div>
+            <div class="highlight-item">
+              <span class="hi-icon">⚡</span>
+              <span data-cs="AI-first workflow — Claude AI a Codex CLI jako součást procesu, ne jako náhrada za přemýšlení"
+                    data-en="AI-first workflow — Claude AI and Codex CLI as part of the process, not a replacement for thinking">
+                AI-first workflow — Claude AI a Codex CLI jako součást procesu, ne jako náhrada za přemýšlení
+              </span>
+            </div>
+            <div class="highlight-item">
+              <span class="hi-icon">🛡️</span>
+              <span data-cs="L2 support mentalita — zkušenosti s kritickými systémy mě naučily řešit problémy metodicky, ne panikařit"
+                    data-en="L2 support mindset — experience with critical systems taught me to solve problems methodically, not panic">
+                L2 support mentalita — zkušenosti s kritickými systémy mě naučily řešit problémy metodicky, ne panikařit
+              </span>
+            </div>
+            <div class="highlight-item">
+              <span class="hi-icon">🚀</span>
+              <span data-cs="Solo schopnost — od architektury přes kód po DevOps a Go Live bez koordinace týmu"
+                    data-en="Solo capability — from architecture through code to DevOps and Go Live without team coordination">
+                Solo schopnost — od architektury přes kód po DevOps a Go Live bez koordinace týmu
+              </span>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP -->
+    <section id="flagship">
+      <div class="container">
+        <p class="section-label" data-cs="Vlajkový projekt" data-en="Flagship project">Vlajkový projekt</p>
+        <div class="flagship-card">
+          <div>
+            <div class="flagship-label" data-cs="🏆 Solo built & deployed" data-en="🏆 Solo built & deployed">
+              🏆 Solo built & deployed
+            </div>
+            <h3>Vydajka.fun</h3>
+            <p data-cs="Kompletní finanční aplikace — web i mobilní verze — navržená, naprogramovaná a nasazená úplně sám. Důkaz toho, co dokáže jeden vývojář s AI-first přístupem."
+               data-en="A complete personal finance app — web and mobile — designed, programmed and deployed entirely solo. Proof of what one developer with an AI-first approach can deliver.">
+              Kompletní finanční aplikace — web i mobilní verze — navržená, naprogramovaná a nasazená úplně sám. Důkaz toho, co dokáže jeden vývojář s AI-first přístupem.
+            </p>
+            <div class="flagship-stats">
+              <div>
+                <div class="fs-num">10k<span>+</span></div>
+                <div class="fs-label" data-cs="Řádků kódu" data-en="Lines of code">Řádků kódu</div>
+              </div>
+              <div>
+                <div class="fs-num">1<span>×</span></div>
+                <div class="fs-label" data-cs="Vývojář" data-en="Developer">Vývojář</div>
+              </div>
+              <div>
+                <div class="fs-num">∞</div>
+                <div class="fs-label" data-cs="Škálovatelnost" data-en="Scalability">Škálovatelnost</div>
+              </div>
+            </div>
           </div>
-          <img src="me.jpg" alt="Martin Fabian" class="avatar" />
+          <div class="flagship-links">
+            <a href="https://vydajka.fun" class="flagship-link" target="_blank" rel="noopener">
+              🌐 vydajka.fun
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=fun.vydajka.app" class="flagship-link" target="_blank" rel="noopener">
+              📱 Google Play
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section id="packages">
+      <div class="container">
+        <p class="section-label" data-cs="Nabídka spolupráce" data-en="Service packages">Nabídka spolupráce</p>
+        <h2 data-cs="Tři způsoby, jak spolupracovat" data-en="Three ways to work together">
+          Tři způsoby, jak spolupracovat
+        </h2>
+        <p class="section-desc"
+           data-cs="Vyberte balíček podle vaší situace — dostanete konkrétní výsledek, ne jen odpracované hodiny."
+           data-en="Choose a package that matches your situation — you get a concrete outcome, not just billed hours.">
+          Vyberte balíček podle vaší situace — dostanete konkrétní výsledek, ne jen odpracované hodiny.
+        </p>
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="package-icon">🔍</div>
+            <div class="package-name" data-cs="Express Audit & Fix" data-en="Express Audit & Fix">Express Audit & Fix</div>
+            <div class="package-target"
+                 data-cs="Pro: aplikaci, která „zlobí" nebo je pomalá"
+                 data-en="For: apps that are buggy or slow">
+              Pro: aplikaci, která „zlobí" nebo je pomalá
+            </div>
+            <div class="package-desc"
+                 data-cs="Hloubková analýza kódu, identifikace bugů a vibe coding cleanup pomocí AI. Výstupem je PDF report s prioritami + oprava kritických chyb + backlog dalších kroků."
+                 data-en="Deep code analysis, bug identification and AI-powered vibe coding cleanup. Output: priority PDF report + critical bug fixes + backlog of next steps.">
+              Hloubková analýza kódu, identifikace bugů a vibe coding cleanup pomocí AI. Výstupem je PDF report s prioritami + oprava kritických chyb + backlog dalších kroků.
+            </div>
+            <div class="package-price"
+                 data-cs="Sazba: <strong>500 Kč / hod</strong> nebo <strong>4 000 Kč / MD</strong>"
+                 data-en="Rate: <strong>500 CZK / hour</strong> or <strong>4,000 CZK / day</strong>">
+              Sazba: <strong>500 Kč / hod</strong> nebo <strong>4 000 Kč / MD</strong>
+            </div>
+          </div>
+          <div class="package-card">
+            <div class="package-icon">🚀</div>
+            <div class="package-name" data-cs="MVP z nuly na 100" data-en="MVP from zero to launch">MVP z nuly na 100</div>
+            <div class="package-target"
+                 data-cs="Pro: startupy, které potřebují rychle funkční produkt"
+                 data-en="For: startups that need a working product fast">
+              Pro: startupy, které potřebují rychle funkční produkt
+            </div>
+            <div class="package-desc"
+                 data-cs="Kompletní vývoj od architektury po nasazení — frontend, backend, databáze, DevOps. AI-first přístup znamená doručení v týdnech, ne měsících. Jako Vydajka.fun, ale pro váš business."
+                 data-en="Complete development from architecture to deployment — frontend, backend, database, DevOps. AI-first approach means delivery in weeks, not months. Like Vydajka.fun, but for your business.">
+              Kompletní vývoj od architektury po nasazení — frontend, backend, databáze, DevOps. AI-first přístup znamená doručení v týdnech, ne měsících. Jako Vydajka.fun, ale pro váš business.
+            </div>
+            <div class="package-price"
+                 data-cs="Sazba: <strong>500 Kč / hod</strong> nebo <strong>4 000 Kč / MD</strong>"
+                 data-en="Rate: <strong>500 CZK / hour</strong> or <strong>4,000 CZK / day</strong>">
+              Sazba: <strong>500 Kč / hod</strong> nebo <strong>4 000 Kč / MD</strong>
+            </div>
+          </div>
+          <div class="package-card">
+            <div class="package-icon">🤝</div>
+            <div class="package-name" data-cs="Externí Senior Partner" data-en="External Senior Partner">Externí Senior Partner</div>
+            <div class="package-target"
+                 data-cs="Pro: zavedené firmy bez drahé agentury"
+                 data-en="For: established companies without expensive agencies">
+              Pro: zavedené firmy bez drahé agentury
+            </div>
+            <div class="package-desc"
+                 data-cs="Dlouhodobá spolupráce 20–40 hodin měsíčně. Údržba, rozvoj funkcí, konzultace architektury. Seniorní partner na telefonu bez agenturní přirážky a zbytečného managementu."
+                 data-en="Long-term collaboration 20–40 hours per month. Maintenance, feature development, architecture consulting. Senior partner on call without agency markup and unnecessary management.">
+              Dlouhodobá spolupráce 20–40 hodin měsíčně. Údržba, rozvoj funkcí, konzultace architektury. Seniorní partner na telefonu bez agenturní přirážky a zbytečného managementu.
+            </div>
+            <div class="package-price"
+                 data-cs="Sazba: <strong>500 Kč / hod</strong> nebo <strong>4 000 Kč / MD</strong>"
+                 data-en="Rate: <strong>500 CZK / hour</strong> or <strong>4,000 CZK / day</strong>">
+              Sazba: <strong>500 Kč / hod</strong> nebo <strong>4 000 Kč / MD</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+        <p class="section-label" data-cs="Jak pracuji" data-en="How I work">Jak pracuji</p>
+        <h2 data-cs="Seniorní přístup bez agenturní přirážky" data-en="Senior approach without agency markup">
+          Seniorní přístup bez agenturní přirážky
+        </h2>
+        <p class="section-desc"
+           data-cs="Přebírám plnou odpovědnost za výsledek — od analýzy po nasazení. Žádné překvapení, žádné výmluvy."
+           data-en="I take full responsibility for the outcome — from analysis to deployment. No surprises, no excuses.">
+          Přebírám plnou odpovědnost za výsledek — od analýzy po nasazení. Žádné překvapení, žádné výmluvy.
+        </p>
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-num">01</div>
+            <div>
+              <div class="process-title" data-cs="Audit a pochopení" data-en="Audit and understanding">Audit a pochopení</div>
+              <div class="process-desc"
+                   data-cs="Nejdříve pochopím, pak sáhnu do kódu. Analýza architektury, databáze a slabých míst. Díky AI se v cizím kódu zorientuji výrazně rychleji než tradičním způsobem."
+                   data-en="Understand first, then touch the code. Analysis of architecture, database and weak points. AI helps me navigate unfamiliar code significantly faster than the traditional approach.">
+                Nejdříve pochopím, pak sáhnu do kódu. Analýza architektury, databáze a slabých míst. Díky AI se v cizím kódu zorientuji výrazně rychleji než tradičním způsobem.
+              </div>
+            </div>
+          </div>
+          <div class="process-card">
+            <div class="process-num">02</div>
+            <div>
+              <div class="process-title" data-cs="AI-enhanced vývoj" data-en="AI-enhanced development">AI-enhanced vývoj</div>
+              <div class="process-desc"
+                   data-cs="Rutinní úkoly a boilerplate deleguji na AI. Sám se soustředím na architekturu, byznysovou logiku a rozhodnutí, kde seniorní zkušenosti opravdu záleží."
+                   data-en="Routine tasks and boilerplate are delegated to AI. I focus on architecture, business logic and decisions where senior experience truly matters.">
+                Rutinní úkoly a boilerplate deleguji na AI. Sám se soustředím na architekturu, byznysovou logiku a rozhodnutí, kde seniorní zkušenosti opravdu záleží.
+              </div>
+            </div>
+          </div>
+          <div class="process-card">
+            <div class="process-num">03</div>
+            <div>
+              <div class="process-title" data-cs="Transparentní dodávka" data-en="Transparent delivery">Transparentní dodávka</div>
+              <div class="process-desc"
+                   data-cs="Pracuji v krátkých cyklech s pravidelnou ukázkou stavu. Vždy víte, co bylo uděláno, co se chystá a kde stojíme vůči cíli."
+                   data-en="I work in short cycles with regular status demos. You always know what's done, what's coming and where we stand against the goal.">
+                Pracuji v krátkých cyklech s pravidelnou ukázkou stavu. Vždy víte, co bylo uděláno, co se chystá a kde stojíme vůči cíli.
+              </div>
+            </div>
+          </div>
+          <div class="process-card">
+            <div class="process-num">04</div>
+            <div>
+              <div class="process-title" data-cs="DevOps a předání" data-en="DevOps and handover">DevOps a předání</div>
+              <div class="process-desc"
+                   data-cs="Postarám se o Linux VPS, SSL, DNS, Docker i CI/CD. Po nasazení zanechám čistou dokumentaci — projekt je váš a vy mu rozumíte."
+                   data-en="I handle Linux VPS, SSL, DNS, Docker and CI/CD. After deployment I leave clean documentation — the project is yours and you understand it.">
+                Postarám se o Linux VPS, SSL, DNS, Docker i CI/CD. Po nasazení zanechám čistou dokumentaci — projekt je váš a vy mu rozumíte.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -659,14 +757,14 @@
     <!-- SKILLS -->
     <section id="skills">
       <div class="container">
-        <p class="section-label" data-cs="Tech Stack" data-en="Tech Stack">Tech Stack</p>
-        <h2 data-cs="Nástroje, se kterými pracuji každý den" data-en="Tools I work with daily">
-          Nástroje, se kterými pracuji každý den
+        <p class="section-label" data-cs="Tech stack" data-en="Tech stack">Tech stack</p>
+        <h2 data-cs="Core expertíza + AI adaptabilita" data-en="Core expertise + AI adaptability">
+          Core expertíza + AI adaptabilita
         </h2>
         <p class="section-desc"
-           data-cs="Full-stack zkušenosti přes celý životní cyklus — od návrhu schématu databáze až po nasazený UI."
-           data-en="Full-stack experience across the entire lifecycle — from database schema to deployed UI.">
-          Full-stack zkušenosti přes celý životní cyklus — od návrhu schématu databáze až po nasazený UI.
+           data-cs="Nejsilnější v Javě a Angularu — to jsou roky enterprise praxe. Ve zbytku se pohybuji díky seniorním základům a AI nástrojům."
+           data-en="Strongest in Java and Angular — years of enterprise practice. In the rest I navigate using senior fundamentals and AI tools.">
+          Nejsilnější v Javě a Angularu — to jsou roky enterprise praxe. Ve zbytku se pohybuji díky seniorním základům a AI nástrojům.
         </p>
         <div class="skills-grid">
           <div class="skill-chip">Java</div>
@@ -676,7 +774,6 @@
           <div class="skill-chip">TypeScript</div>
           <div class="skill-chip">RxJS / NgRx</div>
           <div class="skill-chip">PostgreSQL</div>
-          <div class="skill-chip">R2DBC</div>
           <div class="skill-chip">Kafka</div>
           <div class="skill-chip">Docker</div>
           <div class="skill-chip">Linux / VPS</div>
@@ -684,127 +781,12 @@
           <div class="skill-chip">Python</div>
           <div class="skill-chip">.NET Core</div>
           <div class="skill-chip">REST APIs</div>
-          <div class="skill-chip">AI Integration</div>
           <div class="skill-chip">Android Studio</div>
           <div class="skill-chip">CI/CD</div>
+          <div class="skill-chip">AI Integration</div>
+          <div class="skill-chip">Azure</div>
           <div class="skill-chip">Git</div>
-          <div class="skill-chip">Postman</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="container">
-        <p class="section-label" data-cs="Co dělám" data-en="What I do">Co dělám</p>
-        <h2 data-cs="Vývoj od A do Z" data-en="End-to-end development">Vývoj od A do Z</h2>
-        <p class="section-desc"
-           data-cs="Od nápadu po produkci. Zajišťuji celý stack, takže nemusíte koordinovat více vývojářů."
-           data-en="From idea to production. I handle the full stack so you don't have to coordinate between multiple developers.">
-          Od nápadu po produkci. Zajišťuji celý stack, takže nemusíte koordinovat více vývojářů.
-        </p>
-        <div class="services-grid">
-          <div class="service-card">
-            <span class="service-icon">⚙️</span>
-            <div class="service-title" data-cs="Backend vývoj" data-en="Backend Development">Backend vývoj</div>
-            <div class="service-desc"
-                 data-cs="Reaktivní Java API se Spring Boot/WebFlux, návrh PostgreSQL schémat, Kafka event streaming a Docker deployment. Stavěno na škálování."
-                 data-en="Reactive Java APIs with Spring Boot/WebFlux, PostgreSQL database design, Kafka event streaming and Docker deployment. Built to scale.">
-              Reaktivní Java API se Spring Boot/WebFlux, návrh PostgreSQL schémat, Kafka event streaming a Docker deployment. Stavěno na škálování.
-            </div>
-          </div>
-          <div class="service-card">
-            <span class="service-icon">🎨</span>
-            <div class="service-title" data-cs="Frontend vývoj" data-en="Frontend Development">Frontend vývoj</div>
-            <div class="service-desc"
-                 data-cs="Moderní Angular aplikace se signály, OnPush, lazy loadingem a responzivním designem. Komfortní i v Reactu."
-                 data-en="Modern Angular applications with signals, OnPush, lazy loading and responsive design. Also comfortable with React.">
-              Moderní Angular aplikace se signály, OnPush, lazy loadingem a responzivním designem. Komfortní i v Reactu.
-            </div>
-          </div>
-          <div class="service-card">
-            <span class="service-icon">📱</span>
-            <div class="service-title" data-cs="Mobilní vývoj (Android)" data-en="Mobile (Android)">Mobilní vývoj (Android)</div>
-            <div class="service-desc"
-                 data-cs="Android aplikace v Android Studiu, publikované na Google Play. Celý životní cyklus od optimalizace APK po store listing."
-                 data-en="Android apps built with Android Studio, published to Google Play. Full lifecycle from APK optimization to store listing.">
-              Android aplikace v Android Studiu, publikované na Google Play. Celý životní cyklus od optimalizace APK po store listing.
-            </div>
-          </div>
-          <div class="service-card">
-            <span class="service-icon">🤖</span>
-            <div class="service-title" data-cs="AI integrace" data-en="AI Integration">AI integrace</div>
-            <div class="service-desc"
-                 data-cs="Integrace LLM (Gemini, OpenAI) do vašeho produktu — chatboty, generování obsahu, chytrá automatizace. AI je multiplikátor, ne náhrada."
-                 data-en="Integrate LLMs (Gemini, OpenAI) into your product — chatbots, content generation, smart automation. AI is a multiplier, not a replacement.">
-              Integrace LLM (Gemini, OpenAI) do vašeho produktu — chatboty, generování obsahu, chytrá automatizace. AI je multiplikátor, ne náhrada.
-            </div>
-          </div>
-          <div class="service-card">
-            <span class="service-icon">🖥️</span>
-            <div class="service-title" data-cs="DevOps & Infrastruktura" data-en="DevOps & Infrastructure">DevOps & Infrastruktura</div>
-            <div class="service-desc"
-                 data-cs="Nastavení Linux VPS, DNS, SSL, automatické zálohy, CI/CD pipeline, cron joby. Vaše aplikace běží, vy se soustředíte na business."
-                 data-en="Linux VPS setup, DNS, SSL, automated backups, CI/CD pipelines, cron jobs. Your app stays running while you focus on the business.">
-              Nastavení Linux VPS, DNS, SSL, automatické zálohy, CI/CD pipeline, cron joby. Vaše aplikace běží, vy se soustředíte na business.
-            </div>
-          </div>
-          <div class="service-card">
-            <span class="service-icon">🔍</span>
-            <div class="service-title" data-cs="Code review & audit" data-en="Code Review & Audit">Code review & audit</div>
-            <div class="service-desc"
-                 data-cs="Performance audit, architektonický review, bezpečnostní problémy. Řeknu vám upřímně, co je rozbité a jak to opravit — bez zbytečného omílání."
-                 data-en="Performance audits, architecture review, security issues. I'll tell you honestly what's broken and how to fix it — no fluff.">
-              Performance audit, architektonický review, bezpečnostní problémy. Řeknu vám upřímně, co je rozbité a jak to opravit — bez zbytečného omílání.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RESCUE -->
-    <section id="rescue">
-      <div class="container">
-        <p class="section-label" data-cs="Specialita" data-en="Specialization">Specialita</p>
-        <h2 data-cs="Přebírám nefunkční aplikace" data-en="I rescue broken applications">
-          Přebírám nefunkční aplikace
-        </h2>
-        <p class="section-desc"
-           data-cs="Předchozí vývojář odešel. Aplikace nefunguje, je napůl hotová nebo v kódu nikdo nevyzná. Byl jsem tam — a vím, jak to převzít."
-           data-en="Your previous developer is gone. The app is down, half-built, or nobody understands the codebase. I've been there — and I know how to take over.">
-          Předchozí vývojář odešel. Aplikace nefunguje, je napůl hotová nebo v kódu nikdo nevyzná. Byl jsem tam — a vím, jak to převzít.
-        </p>
-        <div class="rescue-card">
-          <div>
-            <div class="rescue-tag" data-cs="⚡ Záchrana projektu" data-en="⚡ App Rescue">⚡ Záchrana projektu</div>
-            <h3 data-cs="Navazuji tam, kde ostatní skončili" data-en="Taking over where others left off">
-              Navazuji tam, kde ostatní skončili
-            </h3>
-            <p data-cs="Díky AI-assisted vývoji se dokážu zorientovat v neznámém kódu rychleji než při klasickém předání. Analyzuji, stabilizuji a přivedu projekt zpět k životu — pak vám vrátím kontrolu."
-               data-en="Thanks to AI-assisted development, I can onboard into an unfamiliar codebase faster than traditional handover. I analyze, stabilize and bring the project back to life — then hand you back control.">
-              Díky AI-assisted vývoji se dokážu zorientovat v neznámém kódu rychleji než při klasickém předání. Analyzuji, stabilizuji a přivedu projekt zpět k životu — pak vám vrátím kontrolu.
-            </p>
-          </div>
-          <div class="rescue-list">
-            <div class="rescue-item" data-cs="Rychlý audit kódové základny — nejdříve pochopím, pak sáhnu" data-en="Rapid codebase audit — I understand it before I touch it">
-              Rychlý audit kódové základny — nejdříve pochopím, pak sáhnu
-            </div>
-            <div class="rescue-item" data-cs="Bug triage: nejprve kritické, pak vylepšení" data-en="Bug triage: critical issues first, improvements second">
-              Bug triage: nejprve kritické, pak vylepšení
-            </div>
-            <div class="rescue-item" data-cs="Zkušenost s legacy Java i Angular projekty" data-en="Legacy Java / Angular codebases welcome">
-              Zkušenost s legacy Java i Angular projekty
-            </div>
-            <div class="rescue-item" data-cs="Postupná modernizace bez rozbití produkce" data-en="Gradual modernization without breaking production">
-              Postupná modernizace bez rozbití produkce
-            </div>
-            <div class="rescue-item" data-cs="Po předání zanechám čistou dokumentaci" data-en="Clear documentation left behind when the job is done">
-              Po předání zanechám čistou dokumentaci
-            </div>
-            <div class="rescue-item" data-cs="AI nástroje výrazně zkracují čas onboardingu" data-en="AI tools cut onboarding time significantly">
-              AI nástroje výrazně zkracují čas onboardingu
-            </div>
-          </div>
+          <div class="skill-chip">R2DBC</div>
         </div>
       </div>
     </section>
@@ -813,26 +795,25 @@
     <section id="experience">
       <div class="container">
         <p class="section-label" data-cs="Zkušenosti" data-en="Experience">Zkušenosti</p>
-        <h2 data-cs="5+ let produkčního vývoje" data-en="5+ years of production work">5+ let produkčního vývoje</h2>
+        <h2 data-cs="Odkud pocházím" data-en="Where I come from">Odkud pocházím</h2>
         <p class="section-desc"
-           data-cs="Enterprise aplikace, sólové SaaS projekty a vše mezi tím."
-           data-en="Enterprise applications, solo SaaS projects, and everything in between.">
-          Enterprise aplikace, sólové SaaS projekty a vše mezi tím.
+           data-cs="Enterprise projekty, vlastní SaaS i logistický startup. Každá zkušenost přidala vrstvu, kterou přináším do naší spolupráce."
+           data-en="Enterprise projects, own SaaS and a logistics startup. Each experience added a layer I bring to our collaboration.">
+          Enterprise projekty, vlastní SaaS i logistický startup. Každá zkušenost přidala vrstvu, kterou přináším do naší spolupráce.
         </p>
         <div class="timeline">
-
           <div class="exp-card">
             <div class="exp-header">
               <div class="exp-role" data-cs="Java Developer" data-en="Java Developer">Java Developer</div>
               <div class="exp-period">Jul 2025 – <span data-cs="současnost" data-en="Present">současnost</span></div>
             </div>
-            <div class="exp-company" data-cs="Česká pojišťovna · Full-time · Remote" data-en="Czech Insurance Company · Full-time · Remote">
-              Česká pojišťovna · Full-time · Remote
+            <div class="exp-company" data-cs="Česká pojišťovací instituce · Full-time · Remote" data-en="Czech Insurance Institution · Full-time · Remote">
+              Česká pojišťovací instituce · Full-time · Remote
             </div>
             <div class="exp-desc"
-                 data-cs="Enterprise Java vývoj v regulovaném finančním prostředí. Moderní cloud-native stack včetně Kafka a kontejnerizovaných mikroslužeb."
-                 data-en="Enterprise-scale Java development in a regulated financial environment. Working with modern cloud-native stack including Kafka and containerized microservices.">
-              Enterprise Java vývoj v regulovaném finančním prostředí. Moderní cloud-native stack včetně Kafka a kontejnerizovaných mikroslužeb.
+                 data-cs="Enterprise Java vývoj v regulovaném finančním prostředí. Mikroservisy, Kafka event streaming, kontejnerizace a nejvyšší nároky na bezpečnost a stabilitu."
+                 data-en="Enterprise Java development in a regulated financial environment. Microservices, Kafka event streaming, containerization and the highest demands on security and stability.">
+              Enterprise Java vývoj v regulovaném finančním prostředí. Mikroservisy, Kafka event streaming, kontejnerizace a nejvyšší nároky na bezpečnost a stabilitu.
             </div>
             <div class="exp-tags">
               <span class="tag">Java</span>
@@ -842,7 +823,6 @@
               <span class="tag">PostgreSQL</span>
             </div>
           </div>
-
           <div class="exp-card">
             <div class="exp-header">
               <div class="exp-role" data-cs="Zakladatel & Full-Stack Developer" data-en="Founder & Full-Stack Developer">
@@ -850,13 +830,13 @@
               </div>
               <div class="exp-period">Dec 2022 – <span data-cs="současnost" data-en="Present">současnost</span></div>
             </div>
-            <div class="exp-company" data-cs="Vydajka.fun · Samostatná výdělečná činnost · Remote" data-en="Vydajka.fun · Self-employed · Remote">
-              Vydajka.fun · Samostatná výdělečná činnost · Remote
+            <div class="exp-company" data-cs="Vydajka.fun · OSVČ · Remote" data-en="Vydajka.fun · Self-employed · Remote">
+              Vydajka.fun · OSVČ · Remote
             </div>
             <div class="exp-desc"
-                 data-cs="Sólově postavená kompletní aplikace pro správu osobních financí — web i mobil, přes 10 000 řádků kódu. Full-stack architektura s Angular, reaktivními Spring Boot API, PostgreSQL, Linux VPS (DNS, SSL, zálohy) a Android aplikací na Google Play. AI-assisted vývoj od prvního dne."
-                 data-en="Built a complete personal finance web + mobile app solo — 10,000+ lines of code. Full-stack architecture with Angular, Spring Boot WebFlux reactive APIs, PostgreSQL, Linux VPS (DNS, SSL, backups), and Android app published on Google Play. AI-assisted development from day one.">
-              Sólově postavená kompletní aplikace pro správu osobních financí — web i mobil, přes 10 000 řádků kódu. Full-stack architektura s Angular, reaktivními Spring Boot API, PostgreSQL, Linux VPS (DNS, SSL, zálohy) a Android aplikací na Google Play. AI-assisted vývoj od prvního dne.
+                 data-cs="Sólově postavená finanční aplikace — web i Android. Přes 10 000 řádků kódu, vlastní Linux VPS (DNS, SSL, zálohy), publikace na Google Play. Důkaz toho, co dokáže jeden senior s AI-first přístupem."
+                 data-en="Solo-built finance application — web and Android. 10,000+ lines of code, own Linux VPS (DNS, SSL, backups), published on Google Play. Proof of what one senior with an AI-first approach can deliver.">
+              Sólově postavená finanční aplikace — web i Android. Přes 10 000 řádků kódu, vlastní Linux VPS (DNS, SSL, zálohy), publikace na Google Play. Důkaz toho, co dokáže jeden senior s AI-first přístupem.
             </div>
             <div class="exp-tags">
               <span class="tag">Angular</span>
@@ -867,7 +847,6 @@
               <span class="tag">AI Automation</span>
             </div>
           </div>
-
           <div class="exp-card">
             <div class="exp-header">
               <div class="exp-role" data-cs="Angular Developer | Full-Stack" data-en="Angular Developer | Full-Stack">
@@ -879,20 +858,19 @@
               DODO · Full-time · Praha / Remote
             </div>
             <div class="exp-desc"
-                 data-cs="Návrh a údržba enterprise Angular aplikací s NgRx state managementem, vlastními UI knihovnami a optimalizací výkonu (lazy loading, change detection). Vylepšování .NET Core backendu a řešení kritických produkčních bugů. Průkopník AI-assisted vývoje v týmu."
-                 data-en="Designed and maintained enterprise Angular applications with NgRx state management, custom UI libraries and performance optimization (lazy loading, change detection). Also enhanced .NET Core backend features and resolved critical production bugs. Pioneered AI-assisted development practices across the team.">
-              Návrh a údržba enterprise Angular aplikací s NgRx state managementem, vlastními UI knihovnami a optimalizací výkonu (lazy loading, change detection). Vylepšování .NET Core backendu a řešení kritických produkčních bugů. Průkopník AI-assisted vývoje v týmu.
+                 data-cs="Enterprise Angular aplikace s NgRx, vlastními UI knihovnami a optimalizací výkonu. .NET Core backend, řešení kritických produkčních bugů. Průkopník AI-assisted přístupu v týmu."
+                 data-en="Enterprise Angular applications with NgRx, custom UI libraries and performance optimization. .NET Core backend, resolving critical production bugs. Pioneered AI-assisted approach across the team.">
+              Enterprise Angular aplikace s NgRx, vlastními UI knihovnami a optimalizací výkonu. .NET Core backend, řešení kritických produkčních bugů. Průkopník AI-assisted přístupu v týmu.
             </div>
             <div class="exp-tags">
               <span class="tag">Angular</span>
               <span class="tag">NgRx</span>
               <span class="tag">.NET Core</span>
               <span class="tag">RxJS</span>
+              <span class="tag">Azure</span>
               <span class="tag">CI/CD</span>
-              <span class="tag">Figma</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -903,33 +881,39 @@
         <p class="section-label" data-cs="Sazby" data-en="Pricing">Sazby</p>
         <h2 data-cs="Transparentní ceny" data-en="Transparent rates">Transparentní ceny</h2>
         <p class="section-desc"
-           data-cs="Žádná překvapení. Denní sazba nebo hodinová fakturace — podle toho, co vašemu projektu sedí."
-           data-en="No surprises. Fixed day rate or hourly billing — whatever fits your project.">
-          Žádná překvapení. Denní sazba nebo hodinová fakturace — podle toho, co vašemu projektu sedí.
+           data-cs="Žádná překvapení. Platíte za čistý čas seniorního vývojáře — bez kanceláří, HR a projektových manažerů."
+           data-en="No surprises. You pay for pure senior developer time — no offices, HR or project managers.">
+          Žádná překvapení. Platíte za čistý čas seniorního vývojáře — bez kanceláří, HR a projektových manažerů.
         </p>
-        <div class="pricing-grid">
+        <div class="pricing-wrapper">
           <div class="pricing-card featured">
             <div class="pricing-label" data-cs="Denní sazba (MD)" data-en="Day rate (MD)">Denní sazba (MD)</div>
-            <div class="pricing-amount">5 000</div>
-            <div class="pricing-unit" data-cs="Kč za den · ~200 EUR" data-en="CZK per day · ~200 EUR">Kč za den · ~200 EUR</div>
+            <div class="pricing-amount">4 000</div>
+            <div class="pricing-unit" data-cs="Kč za den · ~160 EUR" data-en="CZK per day · ~160 EUR">Kč za den · ~160 EUR</div>
             <div class="pricing-note"
-                 data-cs="Ideální pro průběžné projekty, sprinty nebo když potřebujete stabilní denní kapacitu."
-                 data-en="Best for ongoing projects, sprints, or when you need consistent daily availability.">
-              Ideální pro průběžné projekty, sprinty nebo když potřebujete stabilní denní kapacitu.
+                 data-cs="Ideální pro průběžné projekty a sprinty."
+                 data-en="Ideal for ongoing projects and sprints.">
+              Ideální pro průběžné projekty a sprinty.
             </div>
           </div>
           <div class="pricing-card">
             <div class="pricing-label" data-cs="Hodinová sazba" data-en="Hourly rate">Hodinová sazba</div>
-            <div class="pricing-amount">650</div>
-            <div class="pricing-unit" data-cs="Kč za každou započatou hodinu" data-en="CZK per started hour">Kč za každou započatou hodinu</div>
+            <div class="pricing-amount">500</div>
+            <div class="pricing-unit" data-cs="Kč · každá započatá hodina" data-en="CZK · per started hour">Kč · každá započatá hodina</div>
             <div class="pricing-note"
-                 data-cs="Vhodné pro menší opravy, triage bugů, code review nebo jednorázové konzultace."
-                 data-en="Ideal for short fixes, bug triage, code reviews or one-off consultations.">
-              Vhodné pro menší opravy, triage bugů, code review nebo jednorázové konzultace.
+                 data-cs="Audit, bug triage, code review, konzultace. Účtuje se každá započatá hodina."
+                 data-en="Audit, bug triage, code review, consultations. Every started hour is billed.">
+              Audit, bug triage, code review, konzultace. Účtuje se každá započatá hodina.
             </div>
           </div>
         </div>
-        <p style="margin-top:20px;font-size:13px;color:var(--muted)"
+        <div class="agency-note">
+          <span data-cs="💡 Agentury si za stejnou senioritu účtují <strong>1 500 – 2 500 Kč / hod</strong>. Se mnou ušetříte <strong>až 75 %</strong> — žádné kanceláře, HR ani projektový management. Platíte čistý čas vývojáře."
+                data-en="💡 Agencies charge <strong>1,500 – 2,500 CZK / hour</strong> for the same seniority. With me you save <strong>up to 75%</strong> — no offices, HR or project management overhead. You pay pure developer time.">
+            💡 Agentury si za stejnou senioritu účtují <strong>1 500 – 2 500 Kč / hod</strong>. Se mnou ušetříte <strong>až 75 %</strong> — žádné kanceláře, HR ani projektový management. Platíte čistý čas vývojáře.
+          </span>
+        </div>
+        <p style="margin-top:16px;font-size:13px;color:var(--muted)"
            data-cs="Pouze remote. Fakturace na IČO (OSVČ). NDA k dispozici na vyžádání."
            data-en="Remote only. Invoicing via IČO (OSVČ). NDA available on request.">
           Pouze remote. Fakturace na IČO (OSVČ). NDA k dispozici na vyžádání.
@@ -942,20 +926,18 @@
       <div class="container">
         <div class="contact-box">
           <p class="section-label" style="margin-bottom:16px"
-             data-cs="Spolupracujme" data-en="Let's work together">Spolupracujme</p>
-          <h2 data-cs="Chcete něco skvělého postavit?" data-en="Ready to ship something great?">
-            Chcete něco skvělého postavit?
+             data-cs="Pojďme spolupracovat" data-en="Let's work together">Pojďme spolupracovat</p>
+          <h2 data-cs="Máte projekt? Napište mi." data-en="Have a project? Let's talk.">
+            Máte projekt? Napište mi.
           </h2>
-          <p data-cs="Ať začínáte od nuly nebo přebíráte nefunkční projekt — pojďme si promluvit. Odpovím do 24 hodin."
-             data-en="Whether you're starting from scratch or inheriting a broken codebase — let's talk. I respond within 24 hours.">
-            Ať začínáte od nuly nebo přebíráte nefunkční projekt — pojďme si promluvit. Odpovím do 24 hodin.
+          <p data-cs="Ať začínáte od nuly, přebíráte nefunkční aplikaci nebo potřebujete seniorního partnera pro dlouhodobou spolupráci — odpovím do 24 hodin."
+             data-en="Whether you're starting from scratch, taking over a broken app or need a senior partner for long-term collaboration — I respond within 24 hours.">
+            Ať začínáte od nuly, přebíráte nefunkční aplikaci nebo potřebujete seniorního partnera pro dlouhodobou spolupráci — odpovím do 24 hodin.
           </p>
-          <div class="cta-row" style="justify-content:center;margin-bottom:24px">
+          <div class="cta-row" style="justify-content:center;margin-bottom:20px">
             <a href="mailto:info@vydajka.fun" class="btn btn-primary">info@vydajka.fun</a>
           </div>
-          <a href="https://vydajka.fun" class="contact-link" target="_blank" rel="noopener">
-            🌐 vydajka.fun
-          </a>
+          <a href="https://vydajka.fun" class="contact-link" target="_blank" rel="noopener">🌐 vydajka.fun</a>
         </div>
       </div>
     </section>
@@ -963,35 +945,30 @@
     <!-- FOOTER -->
     <footer>
       <div class="inner">
-        <p>© 2026 Martin Fabian</p>
-        <a href="https://play.google.com/store/apps/details?id=fun.vydajka.app"
-           target="_blank" rel="noopener">Google Play →</a>
+        <p>© 2026 Martin Fabián · OSVČ</p>
+        <a href="https://play.google.com/store/apps/details?id=fun.vydajka.app" target="_blank" rel="noopener">
+          Google Play →
+        </a>
       </div>
     </footer>
 
     <script>
       const buttons = document.querySelectorAll('.lang-btn');
-      let currentLang = 'cs';
 
       function applyLang(lang) {
-        currentLang = lang;
         document.documentElement.lang = lang;
-
-        // Switch all text nodes with data-cs / data-en
         document.querySelectorAll('[data-cs][data-en]').forEach(el => {
           const content = el.getAttribute('data-' + lang);
           if (content !== null) el.innerHTML = content;
         });
-
-        // Active button state
-        buttons.forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.lang === lang);
-        });
+        buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+        localStorage.setItem('lang', lang);
       }
 
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-      });
+      buttons.forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
+
+      const saved = localStorage.getItem('lang');
+      if (saved && saved !== 'cs') applyLang(saved);
     </script>
   </body>
 </html>
