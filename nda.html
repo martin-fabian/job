@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDA — Dohoda o mlčenlivosti | Martin Fabián</title>
+    <style>
+      :root {
+        --bg: #0c0905;
+        --section-bg: #181108;
+        --card: #22180c;
+        --border: rgba(210, 165, 80, 0.13);
+        --accent: #c47c2c;
+        --accent2: #d9a04e;
+        --text: #f0e6d0;
+        --muted: #9a8464;
+        --radius: 14px;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        padding: 40px 20px 60px;
+      }
+
+      .page {
+        max-width: 760px;
+        margin: 0 auto;
+        background: var(--section-bg);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 52px 56px;
+      }
+
+      /* ── HEADER ── */
+      .back-link {
+        display: inline-flex; align-items: center; gap: 6px;
+        font-size: 13px; color: var(--muted);
+        text-decoration: none; margin-bottom: 36px;
+        transition: color 0.2s;
+      }
+      .back-link:hover { color: var(--text); }
+
+      .doc-label {
+        font-size: 11px; font-weight: 600; color: var(--accent2);
+        letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 28px; font-weight: 700;
+        letter-spacing: -0.02em; color: #fff;
+        margin-bottom: 6px;
+      }
+
+      .doc-subtitle {
+        font-size: 14px; color: var(--muted); margin-bottom: 40px;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 32px 0;
+      }
+
+      /* ── PARTIES ── */
+      .parties {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 32px;
+      }
+
+      .party-box {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .party-role {
+        font-size: 11px; font-weight: 600; color: var(--accent2);
+        letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+      }
+
+      .field-row { margin-bottom: 10px; }
+      .field-label { font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+      .field-value {
+        font-size: 13px; color: var(--text);
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--border);
+        border-radius: 6px; padding: 7px 10px;
+        width: 100%;
+        font-family: inherit;
+      }
+      .field-value:focus {
+        outline: none;
+        border-color: rgba(210,165,80,0.35);
+        background: rgba(255,255,255,0.06);
+      }
+      .field-value[readonly] {
+        opacity: 0.75; cursor: default;
+      }
+
+      /* ── SECTIONS ── */
+      .section { margin-bottom: 28px; }
+
+      .section-num {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 24px; height: 24px;
+        background: rgba(196,124,44,0.15);
+        border-radius: 6px;
+        font-size: 12px; font-weight: 700; color: var(--accent2);
+        margin-right: 8px; flex-shrink: 0;
+        vertical-align: middle;
+      }
+
+      h2 {
+        font-size: 15px; font-weight: 600; color: #fff;
+        margin-bottom: 12px; display: flex; align-items: center;
+      }
+
+      p, li { font-size: 13px; color: var(--muted); line-height: 1.75; }
+      strong { color: var(--text); font-weight: 500; }
+
+      ul { padding-left: 20px; margin-top: 8px; }
+      li { margin-bottom: 6px; }
+
+      /* ── DATE & SIGNATURES ── */
+      .sign-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 36px;
+      }
+
+      .sign-box { }
+      .sign-label { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+      .sign-name { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 32px; }
+      .sign-line {
+        border-top: 1px solid var(--border);
+        padding-top: 6px;
+        font-size: 11px; color: var(--muted);
+      }
+
+      /* ── PRINT BUTTON ── */
+      .actions {
+        display: flex; gap: 12px; flex-wrap: wrap;
+        margin-top: 40px; padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+
+      .btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 10px 20px; border-radius: 8px;
+        font-size: 13px; font-weight: 500;
+        cursor: pointer; border: none;
+        text-decoration: none; transition: all 0.2s;
+        font-family: inherit;
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: #d98e3a; transform: translateY(-1px); }
+      .btn-ghost {
+        background: transparent; color: var(--muted);
+        border: 1px solid var(--border);
+      }
+      .btn-ghost:hover { color: var(--text); border-color: rgba(210,165,80,0.3); }
+
+      /* ── PRINT STYLES ── */
+      @media print {
+        body { background: #fff; padding: 0; color: #111; }
+        .page {
+          background: #fff; border: none; border-radius: 0;
+          padding: 32px 40px; max-width: 100%;
+          box-shadow: none;
+        }
+        .back-link, .actions { display: none; }
+        .party-box { border: 1px solid #ccc; background: #f9f9f9; }
+        .field-value { border: 1px solid #ccc; background: #fff; color: #111; }
+        .doc-label, .party-role, .section-num { color: #555; }
+        h1, h2, strong { color: #111; }
+        p, li, .sign-label, .sign-line, .field-label { color: #444; }
+        .sign-line { border-color: #ccc; }
+        hr { border-color: #ddd; }
+      }
+
+      @media (max-width: 640px) {
+        body { padding: 16px 12px 40px; }
+        .page { padding: 28px 20px; }
+        .parties, .sign-row { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+
+      <a href="index.html" class="back-link">← Zpět na portfolio</a>
+
+      <div class="doc-label">Právní dokument · Šablona</div>
+      <h1>Dohoda o mlčenlivosti</h1>
+      <p class="doc-subtitle">Non-Disclosure Agreement (NDA) — jednostranná ochrana důvěrných informací klienta</p>
+
+      <hr />
+
+      <!-- PARTIES -->
+      <div class="parties">
+        <div class="party-box">
+          <div class="party-role">Poskytovatel služeb</div>
+          <div class="field-row">
+            <div class="field-label">Jméno a příjmení</div>
+            <input class="field-value" type="text" value="Martin Fabián" readonly />
+          </div>
+          <div class="field-row">
+            <div class="field-label">IČO</div>
+            <input class="field-value" type="text" placeholder="Doplňte IČO" />
+          </div>
+          <div class="field-row">
+            <div class="field-label">Adresa</div>
+            <input class="field-value" type="text" placeholder="Doplňte adresu" />
+          </div>
+          <div class="field-row">
+            <div class="field-label">E-mail</div>
+            <input class="field-value" type="text" value="info@vydajka.fun" readonly />
+          </div>
+        </div>
+
+        <div class="party-box">
+          <div class="party-role">Objednatel (Klient)</div>
+          <div class="field-row">
+            <div class="field-label">Název společnosti / Jméno</div>
+            <input class="field-value" type="text" placeholder="Doplňte název" />
+          </div>
+          <div class="field-row">
+            <div class="field-label">IČO</div>
+            <input class="field-value" type="text" placeholder="Doplňte IČO" />
+          </div>
+          <div class="field-row">
+            <div class="field-label">Adresa</div>
+            <input class="field-value" type="text" placeholder="Doplňte adresu" />
+          </div>
+          <div class="field-row">
+            <div class="field-label">Zastoupen(a)</div>
+            <input class="field-value" type="text" placeholder="Jméno zástupce" />
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);margin-bottom:28px">
+        (dále společně jako <strong>„Smluvní strany"</strong> a každá samostatně jako <strong>„Smluvní strana"</strong>)
+      </p>
+
+      <p style="font-size:13px;color:var(--muted);margin-bottom:32px">
+        uzavřely níže uvedeného dne tuto dohodu o mlčenlivosti (<strong>„Dohoda"</strong>) za účelem ochrany
+        důvěrných informací sdílených v rámci spolupráce na softwarovém vývoji.
+      </p>
+
+      <hr />
+
+      <!-- I -->
+      <div class="section">
+        <h2><span class="section-num">I</span> Předmět dohody</h2>
+        <p>
+          Smluvní strany si v rámci svého obchodního vztahu (vývoj softwaru, konzultace, code review
+          a další IT služby) mohou vzájemně předávat informace, které jsou důvěrné povahy.
+          Tato Dohoda stanoví podmínky zacházení s takovými informacemi.
+        </p>
+      </div>
+
+      <!-- II -->
+      <div class="section">
+        <h2><span class="section-num">II</span> Definice důvěrných informací</h2>
+        <p>Za <strong>důvěrné informace</strong> se považují veškeré informace, které Objednatel poskytne
+        Poskytovateli v písemné, elektronické nebo ústní podobě, zejména:</p>
+        <ul>
+          <li>zdrojové kódy, databázová schémata, API klíče a přístupové údaje</li>
+          <li>obchodní plány, strategie, finanční údaje a know-how</li>
+          <li>osobní údaje uživatelů a zákazníků Objednatele</li>
+          <li>interní procesy, systémy a technická dokumentace</li>
+          <li>veškeré informace označené jako „důvěrné" nebo jejichž povaha důvěrnost implikuje</li>
+        </ul>
+      </div>
+
+      <!-- III -->
+      <div class="section">
+        <h2><span class="section-num">III</span> Povinnosti Poskytovatele</h2>
+        <p>Poskytovatel se zavazuje:</p>
+        <ul>
+          <li>udržovat důvěrné informace v tajnosti a nezpřístupňovat je třetím osobám bez předchozího
+            písemného souhlasu Objednatele</li>
+          <li>použít důvěrné informace výhradně pro účely plnění sjednané zakázky</li>
+          <li>chránit důvěrné informace alespoň takovým způsobem, jakým chrání vlastní důvěrné informace,
+            nejméně však s přiměřenou péčí</li>
+          <li>zajistit bezpečnost přístupových údajů, repozitářů a serverů sdílených v rámci spolupráce</li>
+          <li>po ukončení spolupráce na požádání vrátit nebo trvale smazat veškeré důvěrné informace</li>
+        </ul>
+      </div>
+
+      <!-- IV -->
+      <div class="section">
+        <h2><span class="section-num">IV</span> Výjimky z mlčenlivosti</h2>
+        <p>Povinnost mlčenlivosti se nevztahuje na informace, které:</p>
+        <ul>
+          <li>jsou nebo se stanou veřejně dostupnými bez porušení této Dohody</li>
+          <li>Poskytovatel prokazatelně znal před jejich sdělením Objednatelem</li>
+          <li>Poskytovatel oprávněně získal od třetí strany bez omezení mlčenlivosti</li>
+          <li>je Poskytovatel povinen sdělit na základě právního předpisu nebo rozhodnutí soudu
+            (v takovém případě Poskytovatel Objednatele neprodleně informuje)</li>
+        </ul>
+      </div>
+
+      <!-- V -->
+      <div class="section">
+        <h2><span class="section-num">V</span> Doba trvání</h2>
+        <p>
+          Tato Dohoda nabývá platnosti dnem podpisu oběma Smluvními stranami a zůstává v platnosti
+          po dobu trvání spolupráce a dále <strong>3 roky po jejím ukončení</strong>, bez ohledu na důvod
+          ukončení.
+        </p>
+      </div>
+
+      <!-- VI -->
+      <div class="section">
+        <h2><span class="section-num">VI</span> Sankce za porušení</h2>
+        <p>
+          V případě prokazatelného porušení této Dohody má Objednatel právo požadovat náhradu
+          skutečně vzniklé škody v plné výši. Smluvní strany se dohodly, že případné spory
+          budou řešeny přednostně smírnou cestou.
+        </p>
+      </div>
+
+      <!-- VII -->
+      <div class="section">
+        <h2><span class="section-num">VII</span> Závěrečná ustanovení</h2>
+        <ul>
+          <li>Tato Dohoda se řídí právním řádem <strong>České republiky</strong>.</li>
+          <li>Veškeré změny Dohody vyžadují písemnou formu a souhlas obou Smluvních stran.</li>
+          <li>Dohoda je vyhotovena ve dvou stejnopisech, každá Smluvní strana obdrží jeden.</li>
+          <li>Tato Dohoda nenahrazuje smlouvu o dílo ani jinou smluvní dokumentaci ke konkrétní zakázce.</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- DATE & SIGNATURES -->
+      <div class="field-row" style="max-width:240px;margin-bottom:32px">
+        <div class="field-label">Místo a datum uzavření</div>
+        <input class="field-value" type="text" placeholder="Praha, DD. MM. RRRR" />
+      </div>
+
+      <div class="sign-row">
+        <div class="sign-box">
+          <div class="sign-label">Poskytovatel</div>
+          <div class="sign-name">Martin Fabián</div>
+          <div class="sign-line">podpis</div>
+        </div>
+        <div class="sign-box">
+          <div class="sign-label">Objednatel</div>
+          <div class="sign-name" style="color:var(--muted)">………………………………</div>
+          <div class="sign-line">podpis a razítko</div>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Vytisknout / Uložit jako PDF</button>
+        <a href="index.html" class="btn btn-ghost">← Zpět na portfolio</a>
+      </div>
+
+    </div>
+  </body>
+</html>
