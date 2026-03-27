@@ -139,6 +139,34 @@
         overflow: hidden;
       }
 
+      .spotlight-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(167, 139, 250, 0.3);
+        box-shadow: 0 0 32px rgba(124, 106, 255, 0.2);
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 640px) {
+        .spotlight-inner {
+          grid-template-columns: 1fr;
+        }
+        .avatar {
+          width: 100px;
+          height: 100px;
+          order: -1;
+        }
+      }
+
       .spotlight-glow {
         position: absolute;
         top: -200px;
@@ -584,6 +612,8 @@
     <section id="spotlight">
       <div class="spotlight-glow"></div>
       <div class="container">
+        <div class="spotlight-inner">
+          <div>
         <div class="badge" data-cs="Dostupný pro freelance projekty" data-en="Available for freelance projects">
           Dostupný pro freelance projekty
         </div>
@@ -619,6 +649,9 @@
             <div class="metric-num">100<span>%</span></div>
             <div class="metric-label" data-cs="Plně remote" data-en="Fully remote">Plně remote</div>
           </div>
+        </div>
+          </div>
+          <img src="me.jpg" alt="Martin Fabian" class="avatar" />
         </div>
       </div>
     </section>
